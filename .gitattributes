@@ -1,15 +1,13 @@
 # ==========================================
-# DEPENDÊNCIAS (O mais importante!)
+# DEPENDÊNCIAS
 # ==========================================
 node_modules/
 /.pnp
 .pnp.js
 
 # ==========================================
-# VARIÁVEIS DE AMBIENTE (Segurança máxima)
+# VARIÁVEIS DE AMBIENTE
 # ==========================================
-# Nunca suba seus arquivos .env, pois eles contêm 
-# a senha do seu banco e o seu JWT_SECRET!
 .env
 .env.local
 .env.development.local
@@ -19,7 +17,6 @@ node_modules/
 # ==========================================
 # PASTAS DE BUILD E COMPILAÇÃO
 # ==========================================
-# Ignora o código gerado pelo TypeScript e o build do React
 dist/
 build/
 out/
