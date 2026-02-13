@@ -1,2 +1,52 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# ==========================================
+# DEPENDÊNCIAS (O mais importante!)
+# ==========================================
+node_modules/
+/.pnp
+.pnp.js
+
+# ==========================================
+# VARIÁVEIS DE AMBIENTE (Segurança máxima)
+# ==========================================
+# Nunca suba seus arquivos .env, pois eles contêm 
+# a senha do seu banco e o seu JWT_SECRET!
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ==========================================
+# PASTAS DE BUILD E COMPILAÇÃO
+# ==========================================
+# Ignora o código gerado pelo TypeScript e o build do React
+dist/
+build/
+out/
+/backend/dist/
+/frontend/dist/
+/frontend/build/
+
+# ==========================================
+# LOGS
+# ==========================================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==========================================
+# ARQUIVOS DE SISTEMA OPERACIONAL E IDEs
+# ==========================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ==========================================
+# TESTES
+# ==========================================
+coverage/
+.nyc_output/
