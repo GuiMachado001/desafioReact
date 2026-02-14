@@ -93,7 +93,4 @@ Guilherme Machado
 <a href="www.linkedin.com/in/guilherme-machado-neves-396693279" target="_blank">
 <img src="https://www.google.com/search?q=https://img.shields.io/badge/LinkedIn-0077B5%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" alt="LinkedIn" />
 </a>
-<a href="[https://www.google.com/search?q=https://github.com/GuiMachado001](https://github.com/GuiMachado001)" target="_blank">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/GitHub-100000%3Fstyle%3Dfor-the-badge%26logo%3Dgithub%26logoColor%3Dwhite" alt="GitHub" />
-</a>
 </p>
