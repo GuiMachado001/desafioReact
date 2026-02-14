@@ -35,7 +35,6 @@ const ClientList = () => {
       } catch (error) {
         console.error('Erro ao buscar clientes:', error);
         
-        // 2. VERIFICAÇÃO DE ERRO 401 (TOKEN INVÁLIDO OU EXPIRADO)
         if (axios.isAxiosError(error) && error.response?.status === 401) {
           localStorage.removeItem('token');
           navigate('/login');

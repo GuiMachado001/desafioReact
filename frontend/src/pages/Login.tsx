@@ -29,12 +29,10 @@ const Login = () => {
       console.log("Resposta do servidor:", response.data);
       
       if (response.data && response.data.token) {
-        // 1. Limpa qualquer lixo anterior e salva o novo token
         localStorage.removeItem('token');
         localStorage.setItem('token', response.data.token);
         
-        // 2. Pequeno delay para garantir que o storage foi escrito
-        // Isso evita que o ClientList dispare o GET antes do token estar pronto
+
         setTimeout(() => {
           navigate('/clientes');
         }, 100);
