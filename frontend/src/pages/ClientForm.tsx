@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Box, Paper } from '@mui/material';
 import { api } from '../services/api';
 
-// 1. Criamos a interface para evitar o erro de "Unexpected any"
 interface Client {
   id: string;
   name: string;
@@ -23,12 +22,10 @@ const ClientForm = () => {
     address: ''
   });
 
-  // 2. Colocamos a lógica de carregar dados dentro do useEffect para evitar 
-  // erros de ordem de declaração e avisos de dependência do Hook.
+
   useEffect(() => {
     const loadClientData = async () => {
       try {
-        // Buscamos a lista e tipamos a resposta como Client[]
         const response = await api.get<Client[]>('/clients');
         const client = response.data.find((c) => c.id === id);
         
@@ -48,7 +45,7 @@ const ClientForm = () => {
     if (id) {
       loadClientData();
     }
-  }, [id]); // O efeito só roda se o ID mudar
+  }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -58,7 +55,6 @@ const ClientForm = () => {
     e.preventDefault();
     try {
       if (id) {
-        // No seu Backend Controller o método update usa (id, req.body)
         await api.put(`/clients/${id}`, formData);
       } else {
         await api.post('/clients', formData);
