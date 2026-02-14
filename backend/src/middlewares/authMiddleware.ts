@@ -1,14 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-declare global {
-  namespace Express {
-    interface Request {
-      user?: any;
-    }
-  }
-}
-
 export const authMiddleware = (req: Request, res: Response, next: NextFunction): void => {
   const authHeader = req.headers.authorization;
 
@@ -27,11 +19,10 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction):
   const token = parts[1];
 
   try {
-    const secret = process.env.JWT_SECRET || 'chave_padrao_para_desenvolvimento';
+    const secret = "desafio_secreto"; 
     
     const decoded = jwt.verify(token, secret);
-
-    req.user = decoded;
+    (req as any).user = decoded;
 
     return next();
   } catch (error) {

@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
-const SECRET_KEY = process.env.JWT_SECRET || "desafio_secreto";
-
+const SECRET_KEY = "desafio_secreto"; 
 export class AuthController {
     static login(req: Request, res: Response) {
         const { username, password } = req.body;

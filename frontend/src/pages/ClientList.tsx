@@ -4,6 +4,7 @@ import {
   Container, Typography, Button, Table, TableBody, TableCell, 
   TableContainer, TableHead, TableRow, Paper, Box 
 } from '@mui/material';
+import axios from 'axios'; // 1. IMPORTAÇÃO NECESSÁRIA PARA O isAxiosError
 import { api } from '../services/api';
 import { generateClientPDF } from '../utils/generatePDF'; 
 
@@ -20,19 +21,30 @@ const ClientList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Definimos a função assíncrona dentro do Effect
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
     const fetchClients = async () => {
       try {
         const response = await api.get('/clients');
         setClients(response.data);
       } catch (error) {
         console.error('Erro ao buscar clientes:', error);
-        navigate('/login');
+        
+        // 2. VERIFICAÇÃO DE ERRO 401 (TOKEN INVÁLIDO OU EXPIRADO)
+        if (axios.isAxiosError(error) && error.response?.status === 401) {
+          localStorage.removeItem('token');
+          navigate('/login');
+        }
       }
     };
 
     fetchClients();
-  }, [navigate]); // Agora apenas 'navigate' é uma dependência
+  }, [navigate]);
 
   return (
     <Container maxWidth="md" sx={{ mt: 5 }}>
@@ -68,23 +80,24 @@ const ClientList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {clients.map((client) => (
-              <TableRow key={client.id} hover>
-                <TableCell>{client.name}</TableCell>
-                <TableCell>{client.email}</TableCell>
-                <TableCell>{client.phone}</TableCell>
-                <TableCell align="center">
-                  <Button 
-                    size="small" 
-                    variant="text" 
-                    onClick={() => navigate(`/clientes/editar/${client.id}`)}
-                  >
-                    Editar
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-            {clients.length === 0 && (
+            {clients.length > 0 ? (
+              clients.map((client) => (
+                <TableRow key={client.id} hover>
+                  <TableCell>{client.name}</TableCell>
+                  <TableCell>{client.email}</TableCell>
+                  <TableCell>{client.phone}</TableCell>
+                  <TableCell align="center">
+                    <Button 
+                      size="small" 
+                      variant="text" 
+                      onClick={() => navigate(`/clientes/editar/${client.id}`)}
+                    >
+                      Editar
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
               <TableRow>
                 <TableCell colSpan={4} align="center">
                   Nenhum cliente cadastrado.

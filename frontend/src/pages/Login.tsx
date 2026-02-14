@@ -10,6 +10,7 @@ import {
   CssBaseline
 } from '@mui/material';
 import { api } from '../services/api';
+import { AxiosError } from 'axios';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -25,11 +26,25 @@ const Login = () => {
     try {
       const response = await api.post('/login', { username, password });
       
-      localStorage.setItem('token', response.data.token);
+      console.log("Resposta do servidor:", response.data);
       
-      navigate('/clientes');
-    } catch {
-      setError('Usuário ou senha inválidos.');
+      if (response.data && response.data.token) {
+        // 1. Limpa qualquer lixo anterior e salva o novo token
+        localStorage.removeItem('token');
+        localStorage.setItem('token', response.data.token);
+        
+        // 2. Pequeno delay para garantir que o storage foi escrito
+        // Isso evita que o ClientList dispare o GET antes do token estar pronto
+        setTimeout(() => {
+          navigate('/clientes');
+        }, 100);
+      } else {
+        setError('Token não encontrado na resposta.');
+      }
+    } catch (err) {
+      const error = err as AxiosError<{ message: string }>;
+      console.error("Erro no login:", error.response?.data || error.message);
+      setError(error.response?.data?.message || 'Usuário ou senha inválidos.');
     }
   };
 
@@ -62,6 +77,7 @@ const Login = () => {
             id="username"
             label="Usuário"
             name="username"
+            autoComplete="username"
             autoFocus 
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -75,6 +91,7 @@ const Login = () => {
             label="Senha"
             type="password"
             id="password"
+            autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

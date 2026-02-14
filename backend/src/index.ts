@@ -6,18 +6,26 @@ import routes from "./routes/routes";
 
 const app = express();
 
-// Middlewares globais
-app.use(cors()); 
+
+app.use(cors({
+    origin: "http://localhost:5173", // Em produção, mude para a URL do seu frontend (ex: http://localhost:5173)
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.use(express.json());
 
-// Rotas
 app.use(routes);
 
-// Inicialização
-AppDataSource.initialize().then(() => {
-    console.log("📦 Banco de dados conectado com sucesso!");
-    
-    app.listen(3000, () => {
-        console.log("🚀 Servidor rodando na porta 3000");
+AppDataSource.initialize()
+    .then(() => {
+        console.log("📦 Banco de dados conectado com sucesso!");
+        
+        const PORT = 3000;
+        app.listen(PORT, () => {
+            console.log(`🚀 Servidor rodando na porta ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error("❌ Erro fatal ao conectar no banco:", error);
     });
-}).catch(error => console.log("Erro ao conectar no banco: ", error));
