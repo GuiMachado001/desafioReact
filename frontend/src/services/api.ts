@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  // Quando estiver pronto, aqui vai o link do Render (ex: https://meu-projeto.onrender.com)
-  baseURL: 'http://localhost:3000', 
+  // URL do backend no Render
+  baseURL: 'https://desafio-react-backend-azak.onrender.com', 
 });
 
 api.interceptors.request.use((config) => {
