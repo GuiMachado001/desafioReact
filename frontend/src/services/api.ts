@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000',
+  // Quando estiver pronto, aqui vai o link do Render (ex: https://meu-projeto.onrender.com)
+  baseURL: 'http://localhost:3000', 
 });
 
 api.interceptors.request.use((config) => {
