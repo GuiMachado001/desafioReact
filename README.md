@@ -1,97 +1,99 @@
-Markdown
-# 🚀 Desafio Técnico - Full Stack Developer (React & Node.js)
+# 🚀 Client Management System - Full Stack Challenge
 
-Este projeto é uma aplicação completa para cadastro e listagem de clientes, desenvolvida como parte de um desafio técnico. A solução abrange desde o banco de dados relacional até uma interface moderna e responsiva.
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Render" />
+  <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify" />
+</p>
 
----
+## 📌 Sobre o Projeto
 
-## 🛠️ Tecnologias Utilizadas
+Este projeto é uma aplicação **Full-Stack** completa para o gerenciamento de clientes. Desenvolvida para um desafio técnico, a solução contempla desde a persistência de dados em um banco relacional até a interface de usuário moderna e a geração de relatórios em PDF.
 
-### Frontend
-- **React** (com TypeScript)
-- **Material UI** (Componentes visuais e estilização)
-- **React Router** (Gerenciamento de rotas e proteção)
-- **Axios** (Integração com API e Interceptors para JWT)
-- **jsPDF & jsPDF-AutoTable** (Geração de relatórios em PDF)
-
-### Backend
-- **Node.js** (com TypeScript)
-- **Express** (Framework web)
-- **TypeORM** (ORM para comunicação com o banco)
-- **PostgreSQL** (Banco de dados relacional)
-- **JWT (JSON Web Token)** (Autenticação simples)
+A aplicação foi construída focando em boas práticas de componentização, tipagem rigorosa com **TypeScript** e separação de responsabilidades (Clean Code).
 
 ---
 
-## 📦 Como Executar o Projeto
+## 🔗 Links de Acesso
+- **🌐 Live Demo (Frontend):** [Visitar Aplicação](https://desafiomilliontec.netlify.app)
 
-### Pré-requisitos
-- Node.js instalado (v18+)
-- Docker e Docker Compose (opcional, para o banco de dados)
+---
 
-### 1. Clonar o Repositório
+## 🛠️ Stack Tecnológica
+
+### **Frontend**
+* **React + TypeScript:** Desenvolvimento de interface reativa e tipada.
+* **Material UI (MUI):** Biblioteca de componentes para um design moderno e responsivo.
+* **React Router Dom:** Gerenciamento de rotas e proteção de acesso.
+* **Axios:** Cliente HTTP para integração com a API.
+* **jsPDF & autoTable:** Geração de relatórios PDF diretamente no navegador.
+
+### **Backend**
+* **Node.js + TypeScript:** Ambiente de execução e segurança no desenvolvimento.
+* **TypeORM:** Mapeamento Objeto-Relacional para manipulação do PostgreSQL.
+* **PostgreSQL (Supabase):** Banco de dados relacional robusto.
+* **JWT (JSON Web Token):** Autenticação e proteção de endpoints.
+* **CORS:** Configuração de segurança para acesso entre domínios.
+
+---
+
+## 🔐 Credenciais de Acesso
+
+Para testar as funcionalidades protegidas, utilize os dados abaixo na tela de login:
+
+| Credencial | Valor |
+| :--- | :--- |
+| **Usuário** | `admin` |
+| **Senha** | `admin` |
+
+---
+
+## 🚀 Como rodar o projeto localmente
+
+### 1. Clone o repositório
 ```bash
 git clone [https://github.com/GuiMachado001/desafioReact.git](https://github.com/GuiMachado001/desafioReact.git)
 cd desafioReact
+```
+
 2. Configurar o Backend
-Bash
+```bash
 cd backend
 npm install
+# Crie um arquivo .env com as credenciais do seu banco de dados
 npm run dev
+```
+
 3. Configurar o Frontend
-Bash
+```bash
 cd ../frontend
 npm install
 npm run dev
-🐳 Rodando com Docker (Diferencial)
-Caso prefira rodar o banco de dados via Docker:
+```
 
-Bash
-docker-compose up -d
-🔐 Credenciais de Acesso
-Para testar a aplicação, utilize os dados fixos abaixo:
+📄 Funcionalidades Implementadas
+[x] Autenticação: Sistema de login com usuário fixo e geração de Token JWT.
 
-Usuário: admin
+[x] Proteção de Rotas: Acesso às telas de cadastro e listagem apenas para usuários autenticados.
 
-Senha: admin
+[x] CRUD de Clientes: Criação, leitura, atualização e exclusão de registros.
 
-🎯 Funcionalidades Implementadas
-[x] Autenticação: Login simples com geração de token JWT.
+[x] Relatórios: Botão para exportação automática da lista de clientes em formato PDF.
 
-[x] Proteção de Rotas: Apenas usuários autenticados acessam a listagem e o cadastro.
+[x] Deploy Automatizado: CI/CD configurado para deploy contínuo no Render e Netlify.
 
-[x] CRUD de Clientes: Criação, Listagem e Edição de dados.
 
-[x] Geração de PDF: Exportação da lista de clientes para documento PDF.
+👤 Autor
+Guilherme Machado 
 
-[x] UI/UX: Interface limpa e responsiva utilizando Material UI.
-
-[x] TypeScript: Tipagem estática em todo o projeto para maior segurança.
-
-📂 Organização do Projeto
-A estrutura foi pensada seguindo os padrões de separação de responsabilidades:
-
-Backend:
-
-src/entities: Modelagem do banco de dados.
-
-src/services: Regras de negócio.
-
-src/controllers: Lógica de entrada/saída das requisições.
-
-src/middlewares: Proteção de rotas e validação de token.
-
-Frontend:
-
-src/pages: Telas principais da aplicação.
-
-src/components: Componentes reutilizáveis (ex: Rota Protegida).
-
-src/services: Configuração do Axios e integração com a API.
-
-src/utils: Funções utilitárias (ex: gerador de PDF).
-
-📄 Licença
-Este projeto está sob a licença MIT.
-
-Desenvolvido por Guilherme Machado 🚀
+<p align="left">
+<a href="www.linkedin.com/in/guilherme-machado-neves-396693279" target="_blank">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/LinkedIn-0077B5%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" alt="LinkedIn" />
+</a>
+<a href="[https://www.google.com/search?q=https://github.com/GuiMachado001](https://github.com/GuiMachado001)" target="_blank">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/GitHub-100000%3Fstyle%3Dfor-the-badge%26logo%3Dgithub%26logoColor%3Dwhite" alt="GitHub" />
+</a>
+</p>
