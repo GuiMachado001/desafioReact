@@ -37,7 +37,6 @@ cd desafioReact
 Bash
 cd backend
 npm install
-# Crie um arquivo .env baseado no .env.example ou use as configurações padrão
 npm run dev
 3. Configurar o Frontend
 Bash
@@ -95,4 +94,4 @@ src/utils: Funções utilitárias (ex: gerador de PDF).
 📄 Licença
 Este projeto está sob a licença MIT.
 
-Desenvolvido por [Seu Nome] 🚀
+Desenvolvido por Guilherme Machado 🚀
