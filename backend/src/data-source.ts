@@ -4,11 +4,7 @@ import { Client } from "./entities/Client";
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    host: "db.amoayolgwzhcjuxgjsdj.supabase.co",
-    port: 5432,
-    username: "postgres",
-    password: "R*7D/E6$dcN2d@A", 
-    database: "postgres",
+    url: process.env.DATABASE_URL, 
     synchronize: true, 
     logging: true,
     entities: [Client],
