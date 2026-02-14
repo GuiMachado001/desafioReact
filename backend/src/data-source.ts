@@ -4,12 +4,15 @@ import { Client } from "./entities/Client";
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    host: process.env.DB_HOST || "localhost",
+    host: "db.amoayolgwzhcjuxgjsdj.supabase.co",
     port: 5432,
-    username: process.env.DB_USER || "postgres",
-    password: process.env.DB_PASSWORD || "postgres",
-    database: process.env.DB_NAME || "desafio_db",
-    synchronize: true,
-    logging: false,
+    username: "postgres",
+    password: "R*7D/E6$dcN2d@A", 
+    database: "postgres",
+    synchronize: true, 
+    logging: true,
     entities: [Client],
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
