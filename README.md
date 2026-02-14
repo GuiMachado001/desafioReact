@@ -86,11 +86,9 @@ npm run dev
 [x] Deploy Automatizado: CI/CD configurado para deploy contínuo no Render e Netlify.
 
 
-👤 Autor
-Guilherme Machado 
 
-<p align="left">
-<a href="www.linkedin.com/in/guilherme-machado-neves-396693279" target="_blank">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/LinkedIn-0077B5%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" alt="LinkedIn" />
-</a>
-</p>
+
+👤 Autor
+
+Guilherme Machado Neves
+
