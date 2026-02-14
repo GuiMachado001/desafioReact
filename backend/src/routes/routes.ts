@@ -12,4 +12,5 @@ routes.post("/clients", authMiddleware, ClientController.create);
 routes.get("/clients", authMiddleware, ClientController.getAll);
 routes.put("/clients/:id", authMiddleware, ClientController.update);
 
+routes.delete("/clients/:id", authMiddleware, ClientController.delete);
 export default routes;

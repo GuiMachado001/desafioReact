@@ -29,4 +29,13 @@ export class ClientService {
         this.clientRepository.merge(client, data);
         return await this.clientRepository.save(client);
     }
+    async deleteClient(id: string) {
+        const client = await this.clientRepository.findOneBy({ id });
+
+        if (!client) {
+            throw new Error("Cliente não encontrado");
+        }
+
+        return await this.clientRepository.remove(client);
+    }
 }

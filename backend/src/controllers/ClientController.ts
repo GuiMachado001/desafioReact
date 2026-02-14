@@ -24,10 +24,24 @@ export class ClientController {
 
     static async update(req: Request, res: Response) {
         try {
-            const id = req.params.id as string;
+            // Asserção de tipo para garantir que id seja string
+            const id = req.params.id as string; 
             
             const client = await clientService.updateClient(id, req.body);
             return res.status(200).json(client);
+        } catch (error: any) {
+            return res.status(400).json({ message: error.message });
+        }
+    }
+
+    static async delete(req: Request, res: Response) {
+        try {
+            const id = req.params.id as string; 
+
+            console.log("Tentando deletar o ID:", id); 
+            
+            await clientService.deleteClient(id);
+            return res.status(204).send(); 
         } catch (error: any) {
             return res.status(400).json({ message: error.message });
         }
